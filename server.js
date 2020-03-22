@@ -15,21 +15,11 @@ const app = express();
 require('./src/models/Product'); 
 
 
-const Product = mongoose.model('Product');
-
-//criando a primeira rota
-app.get('/', (req, res) => {
-    // inserindo dados no mongodb
-    Product.create({
-        title: 'React native',
-        description: 'Build native apps with react',
-        url: 'http://github.com/facebook/react-native'
-    });
+ 
+//Routes
+app.use('/api', require('./src/routes'));
 
 
-   return res.send('Hello Hello world');
-
-});
 
 //definindo a porta do localhost
 app.listen(3001);
